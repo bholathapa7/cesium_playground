@@ -4,7 +4,7 @@ import MetaShape from './components/MetaShape';
 function App() {
   return (
     <div>
-      <MetaShape />
+      <BIMModel />
     </div>
   );
 }

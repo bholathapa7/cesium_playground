@@ -31,7 +31,7 @@ const BIMModel = () => {
     const tileset = scene.primitives.add(
       new Cesium.Cesium3DTileset({
         // url: 'src/assets/tileset.json', // for buildings
-        url: 'src/assets/output2/tileset.json', // for buildings
+        url: 'output/tileset.json', // for buildings
         // url: 'src/assets/tileset_demo.json', // for powerplant
       })
     );

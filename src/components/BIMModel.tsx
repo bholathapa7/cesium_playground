@@ -1,5 +1,5 @@
 import * as Cesium from 'cesium';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   processTileFeatures,
   loadFeature,
@@ -8,7 +8,20 @@ import {
   selectFeature,
 } from '../utils/cesium-utils';
 
+const bimData = [
+  { id: 1, name: 'Building', tileset: 'output/tileset.json' },
+  { id: 2, name: 'Hall', tileset: 'hall/tileset.json' },
+  { id: 3, name: 'Maestro', tileset: 'maestro/tileset.json' },
+];
+
 const BIMModel = () => {
+  const [open, setOpen] = useState(false);
+  const [tilesetJson, setTilesetJson] = useState(bimData[0].tileset);
+
+  const handleOpen = () => {
+    setOpen(!open);
+  };
+
   useEffect(() => {
     const viewer = new Cesium.Viewer('cesiumContainer');
     const scene = viewer.scene;
@@ -31,7 +44,7 @@ const BIMModel = () => {
     const tileset = scene.primitives.add(
       new Cesium.Cesium3DTileset({
         // url: 'src/assets/tileset.json', // for buildings
-        url: 'output/tileset.json', // for buildings
+        url: tilesetJson, // for buildings
         // url: 'src/assets/tileset_demo.json', // for powerplant
       })
     );
@@ -97,9 +110,30 @@ const BIMModel = () => {
     return () => {
       viewer.destroy();
     };
-  }, []);
+  }, [tilesetJson]);
 
-  return <div id="cesiumContainer"></div>;
+  return (
+    <div id="cesiumContainer">
+      <div id="button">
+        <div className="dropdown">
+          <button onClick={() => handleOpen()}>Choose a BIM Model</button>
+          {open ? (
+            <ul className="menu">
+              {bimData.map((bim) => {
+                return (
+                  <li key={bim.id} className="menu-item">
+                    <button onClick={() => setTilesetJson(bim.tileset)}>
+                      {bim.name}
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          ) : null}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default BIMModel;

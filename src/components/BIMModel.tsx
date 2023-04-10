@@ -9,8 +9,8 @@ import {
 } from '../utils/cesium-utils';
 
 const bimData = [
-  { id: 4, name: 'Client2', tileset: 'client2/tileset.json' },
-  { id: 4, name: 'Client', tileset: 'client/tileset.json' },
+  { id: 4, name: 'Client2', tileset: '10107/tileset.json' },
+  { id: 4, name: 'Client', tileset: '10108/tileset.json' },
   { id: 0, name: 'Arch', tileset: 'arch/tileset.json' },
   { id: 1, name: 'Building', tileset: 'Building/tileset.json' },
   { id: 2, name: 'Hall', tileset: 'hall/tileset.json' },

@@ -9,7 +9,10 @@ import {
 } from '../utils/cesium-utils';
 
 const bimData = [
-  { id: 1, name: 'Building', tileset: 'output/tileset.json' },
+  { id: 4, name: 'Client2', tileset: 'client2/tileset.json' },
+  { id: 4, name: 'Client', tileset: 'client/tileset.json' },
+  { id: 0, name: 'Arch', tileset: 'arch/tileset.json' },
+  { id: 1, name: 'Building', tileset: 'Building/tileset.json' },
   { id: 2, name: 'Hall', tileset: 'hall/tileset.json' },
   { id: 3, name: 'Maestro', tileset: 'maestro/tileset.json' },
 ];
@@ -23,13 +26,15 @@ const BIMModel = () => {
   };
 
   useEffect(() => {
+    Cesium.Ion.defaultAccessToken =
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIyMzBjZDM1Yy04OGVmLTRjNzEtYTYzMS1kYjdjMGM4OWJmNzAiLCJpZCI6MTA3Njk5LCJpYXQiOjE2NjI5NTk1NzR9.gL4j3GgzbkQPW68nYV49_vVFFOBNxnGd1jX7b9-ioO0';
     const viewer = new Cesium.Viewer('cesiumContainer');
     const scene = viewer.scene;
     var terrainProvider = Cesium.createWorldTerrain();
 
-    viewer.clock.currentTime = Cesium.JulianDate.fromIso8601(
-      '2023-02-03T00:00:00Z'
-    );
+    // viewer.clock.currentTime = Cesium.JulianDate.fromIso8601(
+    //   '2023-02-03T00:00:00Z'
+    // );
 
     // const entity = viewer.entities.add({
     //   name: 'MyModel',
@@ -62,13 +67,17 @@ const BIMModel = () => {
     // tileset.readyPromise.then(function (tileset: any) {
     //   if (tileset) {
     //     console.log(tilesetJson);
-    //     var longitude = tilesetJson.position.longitude;
-    //     var latitude = tilesetJson.position.latitude;
+    //     var longitude = 126.96669769277779;
+    //     var latitude = 37.566699999722225;
     //     var cartographic = Cesium.Cartographic.fromDegrees(longitude, latitude);
     //     var positions = [cartographic];
 
-    //     const carte = Cesium.Cartesian3.fromRadians(longitude, latitude, 0)
-    //     console.log(carte)
+    //     const carte = Cesium.Cartesian3.fromRadians(
+    //       longitude,
+    //       latitude,
+    //       -4.33146851719357e-15
+    //     );
+    //     console.log(carte);
     //     // var transform = Cesium.Transforms.headingPitchRollToFixedFrame(Cesium.Cartesian3.fromRadians(longitude, latitude, 0), new Cesium.HeadingPitchRoll());
     //     // var array = Cesium.Matrix4.toArray(transform);
     //     // console.log(array);

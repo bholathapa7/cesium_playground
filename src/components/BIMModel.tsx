@@ -30,7 +30,6 @@ const BIMModel = () => {
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIyMzBjZDM1Yy04OGVmLTRjNzEtYTYzMS1kYjdjMGM4OWJmNzAiLCJpZCI6MTA3Njk5LCJpYXQiOjE2NjI5NTk1NzR9.gL4j3GgzbkQPW68nYV49_vVFFOBNxnGd1jX7b9-ioO0';
     const viewer = new Cesium.Viewer('cesiumContainer');
     const scene = viewer.scene;
-    var terrainProvider = Cesium.createWorldTerrain();
 
     // viewer.clock.currentTime = Cesium.JulianDate.fromIso8601(
     //   '2023-02-03T00:00:00Z'
